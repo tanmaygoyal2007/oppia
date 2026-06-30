@@ -105,14 +105,6 @@ export class BaseUser {
     const headless = process.env.HEADLESS === 'true';
     const mobile = process.env.MOBILE === 'true';
     const specName = process.env.SPEC_NAME;
-    /**
-     * Here we are disabling the site isolation trials because it is causing
-     * tests to fail while running in non headless mode (see
-     * https://github.com/puppeteer/puppeteer/issues/7050).
-     */
-    if (!headless) {
-      args.push('--disable-site-isolation-trials');
-    }
 
     await puppeteer
       .launch({
